@@ -18,4 +18,18 @@ class ApiServices {
           'Failed to fetch users. Status code: ${response.statusCode}');
     }
   }
+
+  static Future<User> getUser(int userID) async {
+    late User user;
+    final response =
+        await http.get(Uri.parse('https://reqres.in/api/users/$userID'));
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      user = User.fromJson(data['data']);
+      return user;
+    } else {
+      throw Exception('Failed to load user data');
+    }
+  }
 }

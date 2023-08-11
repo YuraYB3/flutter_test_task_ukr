@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_task_ukr/Models/user_model.dart';
-import 'package:flutter_test_task_ukr/Services/api_services.dart';
-
 import 'Views/home_page.dart';
 
 void main() {

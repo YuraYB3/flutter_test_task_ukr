@@ -39,7 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
             }
             if (!snapshot.hasData) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
               );
             }
             final users = snapshot.data!;
