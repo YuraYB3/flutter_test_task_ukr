@@ -15,11 +15,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final Future<List<User>> _usersFuture = ApiServices.getUsers();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 245, 139, 139),
@@ -45,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }
             final users = snapshot.data!;
+            saveUsers(users);
             return ListView.builder(
               itemCount: users.length,
               itemBuilder: (context, index) {
@@ -56,5 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  void saveUsers(List<User> users) async {
+    try {
+      await ApiServices.saveUsers(users);
+      print('good');
+    } on Exception catch (e) {
+      print(e.toString());
+    }
   }
 }

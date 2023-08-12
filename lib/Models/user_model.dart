@@ -20,4 +20,14 @@ class User {
         lastName: json["last_name"],
         userAvatar: json["avatar"]);
   }
+
+  toJson() {
+    return {
+      'id': userID,
+      'email': userEmail,
+      'first_name': firstName,
+      "last_name": lastName,
+      'avatar': userAvatar
+    };
+  }
 }
